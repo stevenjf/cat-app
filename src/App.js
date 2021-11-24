@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css"
+import { useState } from "react"
+const App = () => {
+  return(
+    <div className = "wholepage">
+      <div className = "Nav">
+        <h1>Title</h1>
+        <h2>Basket</h2>
+      </div>
+      <div className = "Header">Cat Image Header</div>
+      <div className = "imageContainer">
+        All CAT IMAGES
+        </div> 
+        <div className = "footer">
+          Footer
+        </div>
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
     </div>
-  );
+  ) 
+
 }
 
-export default App;
+
+
+
+export default App
