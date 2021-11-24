@@ -4,6 +4,7 @@ import { useEffect } from "react";
 
 const App = () => {
   const [cats, setCats] = useState("")
+  const [basket, setBasket] = useState ([])
   const [error, setError] = useState(
       { 
         error: false, 
@@ -11,22 +12,39 @@ const App = () => {
       }
     )
 //API REQUEST
-const handler = async () => {
+const getCats = async () => {
   try{
     const response = await fetch("https://api.thecatapi.com/v1/images/search?limit=9&page=9&order=Desc")
     if(response.status !== 200){
       throw new Error("the error is...its messed up")
     }
     const data = await response.json()
-    setCats(data)
+    
+
+    let catNames = ['Nibble','Largepaw','Kamyle','Bastet','Smiley','Tink','Foster','Mimi','Striper','Dream','Nina','Azurys','PearlTooth','Nanook','Elephant','Sabrina','Poptart','Cappu','Sleepy','LilBit']
+    let arr = []
+    for (let i = 0; i < 8; i++) {
+      arr.push({cat: data[i], url: data[i].url , name: catNames[i], price: Math.round(((Math.random() * 200) + 150)), quantity: 1})
+    }
+    setCats(arr)
+
+
   }catch(e){
     setError({ error: true, message: e.message})
   }
 }
 //USE EFFECT CALLS ASYNC FUNCTION (Handler)
 useEffect(() => {
-  handler()
+  getCats()
 },[])
+
+// const addToBasket = () => {
+// let basket = [...basket]
+
+// } 
+
+
+
 
 //IF CHECKS FOR ERROR  HANDLING
   if(!cats){
@@ -44,19 +62,19 @@ useEffect(() => {
         {/* basket needs to add up the subtotal for every cat being bought... when clicked needs to pop up sidebar*/}
         <h1>CATS_FOR_LIFE.com</h1>
         <h2>Basket</h2>
-        <p>Cats: {cats[0].url}</p> 
-        <button onClick={handler}>Bring Cats</button> 
+       
+        <button onClick={getCats}>Bring Cats</button> 
       </div>
 
       <div className = "Header">Cat Image Header</div>
 
       <div className = "imageContainer">
-        All CAT IMAGES
+        {/* All CAT IMAGES */}
         {cats.map((item, index) => {
         return( 
         <>
-       <h2 key={index}>{item.url}</h2>
        <img src={item.url} alt="Cat"></img>
+       <h2>Name:{item.name} Price: £{item.price}</h2>
        </>
        )
       })}
