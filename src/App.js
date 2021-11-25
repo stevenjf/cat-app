@@ -29,6 +29,7 @@ const getCats = async () => {
     setCats(arr)
 
 
+
   }catch(e){
     setError({ error: true, message: e.message})
   }
@@ -38,10 +39,14 @@ useEffect(() => {
   getCats()
 },[])
 
-// const addToBasket = () => {
-// let basket = [...basket]
+const addHandler = () => {
+  return(
+    basket =
 
-// } 
+  )
+}
+
+
 
 
 
@@ -75,6 +80,11 @@ useEffect(() => {
         <>
        <img src={item.url} alt="Cat"></img>
        <h2>Name:{item.name} Price: £{item.price}</h2>
+       
+       <AddToCart price = {item.price } />
+       
+       
+
        </>
        )
       })}
@@ -89,6 +99,14 @@ useEffect(() => {
     </div>
   ) 
 
+}
+const AddToCart = (props) => {
+  return(
+    <div>
+    <button onClick = {props.price}>{props.price}</button>
+    </div>
+
+  )
 }
 
 export default App
