@@ -79,7 +79,7 @@ useEffect(() => {
        )
       })}
         </div> 
-        {/* ImageContainer need to have a button for purchesing and adding it to basket */}
+        {/* ImageContainer need to have a button for purchasing and adding it to basket */}
 
   
         <div className = "footer">
