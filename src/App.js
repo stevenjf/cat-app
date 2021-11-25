@@ -21,9 +21,9 @@ const getCats = async () => {
     const data = await response.json()
     
 
-    let catNames = ['Nibble','Largepaw','Kamyle','Bastet','Smiley','Tink','Foster','Mimi','Striper','Dream','Nina','Azurys','PearlTooth','Nanook','Elephant','Sabrina','Poptart','Cappu','Sleepy','LilBit']
+    let catNames = ['Pip','Daniel','Steven','Anthony','Elvis','Ringo','Lennon','Paul','Harrison']
     let arr = []
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 9; i++) {
       arr.push({cat: data[i], url: data[i].url , name: catNames[i], price: Math.round(((Math.random() * 200) + 150)), quantity: 1})
     }
     setCats(arr)
