@@ -34,21 +34,17 @@ const getCats = async () => {
     setError({ error: true, message: e.message})
   }
 }
+
+const activeBasket  = (item) =>{
+  let storedBasket = [...basket] 
+  storedBasket.push(item)
+  setBasket(storedBasket)
+  
+}
 //USE EFFECT CALLS ASYNC FUNCTION (Handler)
 useEffect(() => {
   getCats()
 },[])
-
-const addHandler = () => {
-  return(
-    basket =
-
-  )
-}
-
-
-
-
 
 
 //IF CHECKS FOR ERROR  HANDLING
@@ -81,7 +77,8 @@ const addHandler = () => {
        <img src={item.url} alt="Cat"></img>
        <h2>Name:{item.name} Price: £{item.price}</h2>
        
-       <AddToCart price = {item.price } />
+       <AddToCart price = {item.price} cat = {item} func={activeBasket} />
+       
        
        
 
@@ -103,10 +100,19 @@ const addHandler = () => {
 const AddToCart = (props) => {
   return(
     <div>
-    <button onClick = {props.price}>{props.price}</button>
+    <button onClick = { () => props.func(props.cat)}>£{props.price}</button>
+    
     </div>
-
   )
 }
+// const CatArray =[]
+//   for (let i = 0; i < 8; i++)
+//     return( 
+//     <aside {}></aside>
+
+//   )
+    
+  
+// }
 
 export default App
